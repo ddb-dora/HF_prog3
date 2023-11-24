@@ -1,0 +1,19 @@
+- egy button-t listenerrel lehet megvalósítani. Ehhez jön jól a lambda
+
+- IIT-s oldalról, követelmények:
+  -> Feladat rövid szöveges ismertetése (körülbelül fél-egy A4-es oldal 
+     terjedelem), ami a feladatot nem ismerő számára összefoglalja a lényeget.
+     Ismert feladat (pl Pacman vagy tetris) esetén is szöveges ismertetés.
+  -> Use-case-ek felsorolása és kifejtése (milyen funkciókat és hogyan ér el 
+     a felhasználó).
+  -> Megoldási ötlet vázlatos ismertetése, amely többek között felsorolja 
+     az alkalmazott technológiai megoldásokat, bemtatja a tervezett 
+     fájlformátumokat, stb. Kerüljük a "majd kitalálom implementáció közben" 
+     jellegű specifikációt.
+
+- végleges:
+  -> Swing-alapú GUI
+     Mind a menü, és legalább 1 osztály: JTable, JTree, JComboBox
+  -> kollekciók
+  -> file kezelés szerializációval
+  -> unit tesztek

@@ -1,0 +1,22 @@
+package renju;
+
+public class Board {
+	//2D-s tömb a táblánknak, ami 15x15-ös
+	private int row;
+	private int col;
+	private int[][] board = new int[row][col];
+	
+	//ctor
+	public Board(int b[][], int r, int c) {
+		row = r;
+		col = c;
+		for(int i = 0; i < row; i++) {
+			for(int j = 0; j < col; j++) {
+				board[i][j] = 0;
+			}
+		}
+	}
+	public void drawBoard(Board board) {
+			
+	}
+}

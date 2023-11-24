@@ -1,0 +1,12 @@
+package renju;
+
+public class Board {
+	//2D-s tömb a táblánknak, ami 15x15-ös
+	private int[][] board = new int[15][15];
+	
+	//ctor
+	public Board(int b[][]) {
+		
+	}
+	
+}

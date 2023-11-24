@@ -1,0 +1,10 @@
+package game;
+import view.ViewFrame;
+
+public class Main {
+	public static void main(String[] args) {
+		Board board = new Board(15, 15);
+		ViewFrame frame = new ViewFrame();
+		frame.setVisible(true);
+	}
+}
