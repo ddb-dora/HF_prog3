@@ -1,0 +1,13 @@
+package game;
+
+public class Cell {
+	int value;
+	
+	//ctor
+	public Cell() {
+		value = 0;
+	}
+	//public void draw(Graphics g, BufferedImage image) {
+		
+	//}
+}

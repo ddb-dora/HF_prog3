@@ -1,0 +1,14 @@
+package game;
+
+public class Cell {
+	int value;
+	int[][] = coordinates[2][15];
+	//ctor
+	public Cell() {
+		value = 0;
+		for(int i = 0, j = 0; i <)
+	}
+	//public void draw(Graphics g, BufferedImage image) {
+		
+	//}
+}

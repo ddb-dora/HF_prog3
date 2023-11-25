@@ -1,4 +1,3 @@
 INDEX VERSION 1.134+D:\BME\5. félév BME\Prog3\HF_prog3\.metadata\.plugins\org.eclipse.jdt.core
-3092266245.index
 991005954.index
 1865797976.index

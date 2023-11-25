@@ -2,28 +2,38 @@ package view;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.List;
 
 import game.Board;
-;
-public class ViewFrame extends JFrame {
+
+public class ViewFrame extends JFrame{
 	private JButton button;
 	
 	BufferedImage blackImage; 
-	
 	BufferedImage whiteImage; 
+	
+	JPanel boardPanel;
+	List<Point>imagePositions = new ArrayList<>();
+
+	int testX, testY;
 
 	public ViewFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Bezárható ablakot készitünk
 		setTitle("Renju");		//Az ablak cime
-		setSize(1200, 800);		//Az ablak mérete
-		setResizable(true);		//átméretezhető az ablak
-		System.out.println(System.getProperty("user.dir"));
+		setSize(800, 800);		//Az ablak mérete
+		setResizable(false);	//átméretezhető az ablak
+		setBackground(Color.BLUE);
+		
 
 		try {
 		blackImage = ImageIO.read(new File("images/blackCoin.png"));
@@ -32,29 +42,32 @@ public class ViewFrame extends JFrame {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-		
+
 		//A tábla vonalainak rajzolásához
-		JPanel boardPanel = new JPanel(){
+		boardPanel = new JPanel(){
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				drawTable(g);
 		//A tábla sor- és oszlopneveinek rajzolásához
 				drawString(g);
+		//Kattinthatóság
 		//A lépés kirajzolásához, X és O helyett fekete-fehér korongok
-				drawPicture(g, blackImage, 151, 151, this);
-			}
-		
-			
+				for(int i = 0; i < imagePositions.size(); i++){
+					drawPicture(g, blackImage, testX, testY, this);
+				}
+				
+			}			
 		};
-		
-		
+		boardPanel.setBackground(Color.white);
 		//Megjelenitjük a táblát, és minden mást is majd rajta
 		add(boardPanel, BorderLayout.CENTER);
-		
+
 		//A frame-et láthatóvá tesszük.
 		setVisible(true);
-		
+		boardPanel.addMouseListener(new MyMouseListener());
+
+
 	}
 	
 	public void printMenu() {
@@ -84,7 +97,6 @@ public class ViewFrame extends JFrame {
 		y1 = 135;
 		x2 = 150;
 		y2 = 600;
-		
 		
 		for(int i = 0; i < numOfCols + 1; i++) {
 			g.drawLine(x1, y1, x2, y2);
@@ -117,8 +129,47 @@ public class ViewFrame extends JFrame {
 			y += dist;
 		}
 	}
-	private void drawPicture(Graphics g, BufferedImage image, int x, int y, JPanel panel) {
+	public void drawPicture(Graphics g, BufferedImage image, int x, int y, JPanel panel) {
 			g.drawImage(image, x, y, panel);
+
 		
+	}
+	
+	//MouseListener függvényeinek felüldefiniálása
+	private class MyMouseListener implements MouseListener{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			testX = e.getX();
+			testY = e.getY();
+			System.out.println("MouseListener clicked " + e.getX() + " " + e.getY());
+			imagePositions.add(e.getPoint());
+			repaint();
+		}
+	
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+			
+		}
+	
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 }
